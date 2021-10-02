@@ -16,6 +16,12 @@ def get_data(url):
     r = requests.get(url,headers=headers)
     soup  = BeautifulSoup(r.text,'html.parser')
     return soup
+def data_scrp(soup):
+    var_bel  = soup.find('div',class_='FVeGwb')
+    hd = var_bel.find_all('div',class_='NiLAwe-y6IFtc')
+def data_fetch(soup):
+var_bel  = soup.find('div',class_='FVeGwb-CVnAc-Haq2Hf')
+hd = var_bel.find_all('div',class_='NiLAwe-y6IFtc-R7GTQ-keNKEd-j7vNaf')
 def data_parse(soup):
     var_bel  = soup.find('div',class_='FVeGwb CVnAc Haq2Hf bWfURe')
     hd = var_bel.find_all('div',class_='NiLAwe y6IFtc R7GTQ keNKEd j7vNaf nID9nc')
@@ -42,6 +48,7 @@ def load_data(main_list):
     df.to_csv(f'main_data{h}.csv',index=False)
 
 
+    
 soup = get_data(url)
 data_parse(soup)
 load_data(main_list)
